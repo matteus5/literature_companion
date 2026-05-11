@@ -1,10 +1,9 @@
-streamlit==1.38.0
+streamlit
 pdfplumber
 PyPDF2
-jieba
-yake
-langdetect
-deep-translator
 sumy
-reportlab
+yake
 nltk
+langdetect
+jieba
+tencentcloud-sdk-python
