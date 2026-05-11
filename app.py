@@ -24,46 +24,50 @@ from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentClo
 
 DetectorFactory.seed = 0
 
-# ---------- 页面配置（背景图片 + 白色文字衬底） ----------
+# ---------- 页面配置（背景图片） ----------
 st.set_page_config(page_title="文献伴侣·双语版", page_icon="📚", layout="centered")
-st.markdown("""
+
+# 背景图片的 GitHub raw 链接（请确保 bg.jpg 在仓库根目录）
+BG_IMAGE_URL = "https://raw.githubusercontent.com/matteus5/literature_companion/main/bg.jpg"
+
+st.markdown(f"""
 <style>
-    /* 页面背景图片（本地bg.jpg，请确保放在仓库根目录） */
-    .stApp, body {
-        background-image: url('bg.jpg') !important;
+    /* 页面背景图片（使用你的 bg.jpg） */
+    .stApp, body {{
+        background-image: url('{BG_IMAGE_URL}') !important;
         background-size: cover !important;
         background-position: center !important;
         background-attachment: fixed !important;
-    }
+    }}
     /* 主内容区域：半透明白色衬底，保证文字可读 */
-    .main .block-container {
+    .main .block-container {{
         background-color: rgba(255, 255, 255, 0.85) !important;
         border-radius: 20px;
         padding: 2rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
-    }
+    }}
     /* 全局文字深色 */
-    html, body, .stApp, .stApp * {
+    html, body, .stApp, .stApp * {{
         color: #1e293b !important;
-    }
-    .stTextInput input, .stTextArea textarea, .stSelectbox select {
+    }}
+    .stTextInput input, .stTextArea textarea, .stSelectbox select {{
         color: #1e293b !important;
         background-color: rgba(255, 255, 255, 0.9) !important;
-    }
-    .stButton button {
+    }}
+    .stButton button {{
         color: #1e293b !important;
         background-color: #f0f2f6 !important;
         border: 1px solid #cbd5e1 !important;
-    }
+    }}
     /* 隐藏 Streamlit 默认 UI */
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
-    footer {visibility: hidden;}
-    .stDeployButton {display: none;}
-    [data-testid="stToolbar"] {display: none;}
+    #MainMenu {{visibility: hidden;}}
+    header {{visibility: hidden;}}
+    footer {{visibility: hidden;}}
+    .stDeployButton {{display: none;}}
+    [data-testid="stToolbar"] {{display: none;}}
     /* 聊天消息样式（半透明白色底） */
-    .chat-message-user {
+    .chat-message-user {{
         background-color: rgba(255, 255, 255, 0.95);
         padding: 12px;
         border-radius: 20px;
@@ -72,8 +76,8 @@ st.markdown("""
         align-self: flex-end;
         color: #1e293b !important;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-    .chat-message-assistant {
+    }}
+    .chat-message-assistant {{
         background-color: rgba(255, 255, 255, 0.95);
         padding: 12px;
         border-radius: 20px;
@@ -82,14 +86,13 @@ st.markdown("""
         align-self: flex-start;
         color: #1e293b !important;
         box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-    h1, h2, h3 {
+    }}
+    h1, h2, h3 {{
         color: #0f172a !important;
-    }
-    /* 输入框和按钮区域半透明 */
-    .stTextInput, .stForm, .stButton {
+    }}
+    .stTextInput, .stForm, .stButton {{
         background-color: transparent;
-    }
+    }}
 </style>
 """, unsafe_allow_html=True)
 
